@@ -1,1 +1,66 @@
-/*# sourceMappingURL=styke.css.map */
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap");
+:root {
+  --Desaturated_Red: hsl(0, 36%, 70%);
+  --Soft_Red: hsl(0, 93%, 68%);
+  --Dark_Grayish_Red: hsl(0, 6%, 24%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62%;
+}
+
+body {
+  border: 1px solid #000;
+  font-family: "Josefin Sans", sans-serif;
+  background-image: linear-gradient(135deg, hsl(0, 80%, 86%), to hsl(0, 74%, 74%));
+}
+
+main header {
+  padding: 2rem;
+}
+main header img {
+  width: 11rem;
+}
+main .container-img {
+  position: relative;
+  height: 28rem;
+}
+main .container-img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+main .container-text {
+  padding: 4rem 2.2rem 0 2.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+main .container-text h1 {
+  font-size: 3.8rem;
+  color: var(--Desaturated_Red);
+  font-weight: 300;
+  letter-spacing: 0.8rem;
+  line-height: 4.2rem;
+}
+main .container-text h1 span {
+  font-size: 4rem;
+  color: var(--Dark_Grayish_Red);
+  font-weight: 600;
+}
+main .container-text p {
+  margin-top: 1.5rem;
+  line-height: 2rem;
+  text-transform: none;
+  font-size: 1.3rem;
+  padding: 0 1.9rem;
+}/*# sourceMappingURL=styke.css.map */
