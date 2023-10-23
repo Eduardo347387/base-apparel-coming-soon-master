@@ -18,18 +18,21 @@ html {
 body {
   border: 1px solid #000;
   font-family: "Josefin Sans", sans-serif;
-  background-image: linear-gradient(135deg, hsl(0, 80%, 86%), to hsl(0, 74%, 74%));
+  background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
 }
 
+main {
+  height: 100vh;
+}
 main header {
-  padding: 2rem;
+  padding: 3rem;
 }
 main header img {
-  width: 11rem;
+  width: 12rem;
 }
 main .container-img {
   position: relative;
-  height: 28rem;
+  height: 24rem;
 }
 main .container-img img {
   position: absolute;
@@ -41,13 +44,13 @@ main .container-img img {
      object-fit: cover;
 }
 main .container-text {
-  padding: 4rem 2.2rem 0 2.2rem;
+  padding: 5rem 4.2rem 0 4.2rem;
   text-align: center;
   text-transform: uppercase;
+  color: var(--Desaturated_Red);
 }
 main .container-text h1 {
   font-size: 3.8rem;
-  color: var(--Desaturated_Red);
   font-weight: 300;
   letter-spacing: 0.8rem;
   line-height: 4.2rem;
@@ -61,6 +64,44 @@ main .container-text p {
   margin-top: 1.5rem;
   line-height: 2rem;
   text-transform: none;
-  font-size: 1.3rem;
-  padding: 0 1.9rem;
+  font-size: 1.39rem;
+}
+main .container-text .formulario {
+  margin-top: 3rem;
+}
+main .container-text .formulario .input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  border: 1px solid var(--Desaturated_Red);
+  height: 5rem;
+  border-radius: 40rem;
+  width: 100%;
+  padding-left: 2rem;
+  margin-bottom: 20px;
+}
+main .container-text .formulario .input-container input[type=text] {
+  font-size: 1.2rem;
+  width: 76%;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+main .container-text .formulario .input-container input[type=text]::-moz-placeholder {
+  color: var(--Desaturated_Red);
+}
+main .container-text .formulario .input-container input[type=text]::placeholder {
+  color: var(--Desaturated_Red);
+}
+main .container-text .formulario .input-container button[type=submit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20%;
+  height: 4.8rem;
+  width: 6.3rem;
+  border-radius: inherit;
+  border: none;
+  outline: none;
+  background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
 }/*# sourceMappingURL=styke.css.map */
