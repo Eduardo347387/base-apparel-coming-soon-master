@@ -4,6 +4,7 @@
   --Soft_Red: hsl(0, 93%, 68%);
   --Dark_Grayish_Red: hsl(0, 6%, 24%);
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -66,7 +67,8 @@ main .container-text p {
   font-size: 1.39rem;
 }
 main .container-text .formulario {
-  margin-top: 3rem;
+  margin-top: 3.3rem;
+  border: 1px solid #000;
 }
 main .container-text .formulario .input-container {
   display: flex;
@@ -101,6 +103,5 @@ main .container-text .formulario .input-container button[type=submit] {
   width: 6.3rem;
   border-radius: inherit;
   border: none;
-  outline: none;
   background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
 }/*# sourceMappingURL=styke.css.map */
