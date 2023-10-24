@@ -67,8 +67,7 @@ main .container-text p {
   font-size: 1.39rem;
 }
 main .container-text .formulario {
-  margin-top: 3.3rem;
-  border: 1px solid #000;
+  margin-top: 3.1rem;
 }
 main .container-text .formulario .input-container {
   display: flex;
@@ -103,5 +102,6 @@ main .container-text .formulario .input-container button[type=submit] {
   width: 6.3rem;
   border-radius: inherit;
   border: none;
+  outline: none;
   background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
 }/*# sourceMappingURL=styke.css.map */
