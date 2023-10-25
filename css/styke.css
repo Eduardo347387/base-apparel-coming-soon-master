@@ -16,12 +16,18 @@ html {
 }
 
 body {
-  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
   font-family: "Josefin Sans", sans-serif;
   background: linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%));
 }
 
 main {
+  position: relative;
+  width: 100%;
   height: 100vh;
 }
 main header {
@@ -32,22 +38,31 @@ main header img {
 }
 main .container-img {
   position: relative;
-  height: 24rem;
+  height: 25rem;
 }
-main .container-img img {
-  position: absolute;
-  top: 0;
-  left: 0;
+main .container-img .image {
+  background-image: url(../images/hero-mobile.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  transition: 0.3s ease-in-out;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
 main .container-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 5rem 4.2rem 0 4.2rem;
   text-align: center;
   text-transform: uppercase;
   color: var(--Desaturated_Red);
+}
+main .container-text h1, main .container-text p, main .container-text .formulario {
+  transition: 0.6s ease-in-out;
+  width: 100%;
+  max-width: 45rem;
 }
 main .container-text h1 {
   font-size: 3.8rem;
@@ -56,6 +71,7 @@ main .container-text h1 {
   line-height: 4.2rem;
 }
 main .container-text h1 span {
+  transition: inherit;
   font-size: 4rem;
   color: var(--Dark_Grayish_Red);
   font-weight: 600;
@@ -71,18 +87,16 @@ main .container-text .formulario {
 }
 main .container-text .formulario .input-container {
   display: flex;
-  align-items: center;
   position: relative;
   border: 1px solid var(--Desaturated_Red);
   height: 5rem;
-  border-radius: 40rem;
-  width: 100%;
+  border-radius: 2.5rem;
   padding-left: 2rem;
-  margin-bottom: 20px;
 }
 main .container-text .formulario .input-container input[type=text] {
-  font-size: 1.2rem;
-  width: 76%;
+  margin-right: 1rem;
+  width: 90%;
+  font-size: 1.3rem;
   border: none;
   outline: none;
   background: transparent;
@@ -94,14 +108,107 @@ main .container-text .formulario .input-container input[type=text]::placeholder 
   color: var(--Desaturated_Red);
 }
 main .container-text .formulario .input-container button[type=submit] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 20%;
-  height: 4.8rem;
-  width: 6.3rem;
+  height: 100%;
+  width: 7rem;
   border-radius: inherit;
   border: none;
   outline: none;
   background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+}
+main footer {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
+}
+
+@media (min-width: 376px) {
+  main .container-img {
+    height: 38rem;
+  }
+  main .container-img .image {
+    background-size: cover;
+    background-position: left top;
+  }
+}
+@media (min-width: 659px) {
+  main .container-text h1 {
+    line-height: 5.2rem;
+    font-size: 4.5rem;
+  }
+  main .container-text h1 span {
+    font-size: 4.7rem;
+  }
+  main .container-text p {
+    margin-top: 1.8rem;
+    padding: 0 40px;
+    line-height: 2.4rem;
+    font-size: 1.7rem;
+  }
+  main footer {
+    bottom: -60px;
+  }
+}
+@media (min-width: 1024px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+  }
+  main::before {
+    z-index: -1;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/bg-pattern-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    grid-row: 1/-1;
+    grid-column: 1/11;
+  }
+  main header {
+    grid-row: 1/3;
+    grid-column: 2/10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  main .container-img {
+    height: unset;
+    grid-row: 1/-1;
+    grid-column: 10/-1;
+  }
+  main .container-img .image {
+    background-image: url(../images/hero-desktop.jpg);
+  }
+  main .container-text {
+    grid-row: 3/14;
+    grid-column: 2/9;
+    text-align: left;
+    align-items: flex-start;
+    padding-left: 3rem;
+  }
+  main .container-text h1 {
+    font-size: 6.4rem;
+    line-height: 7.6rem;
+    letter-spacing: 1.4rem;
+  }
+  main .container-text h1 span {
+    font-size: 6.6rem;
+  }
+  main .container-text p {
+    margin-top: 2.6rem;
+    padding: 0;
+    font-size: 1.6rem;
+    line-height: 2.8rem;
+  }
+  main footer {
+    bottom: 0;
+    grid-row: -1;
+    grid-column: 1/11;
+    border: 1px solid;
+  }
 }/*# sourceMappingURL=styke.css.map */
