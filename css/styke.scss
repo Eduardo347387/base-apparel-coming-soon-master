@@ -28,10 +28,10 @@ body{
 }
 
 main{
-    
+ 
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     
     header{
         padding: 3rem;
@@ -65,7 +65,7 @@ main{
         h1,p,.formulario{
             transition: 0.6s ease-in-out;
             width: 100%;
-            max-width: 45rem;
+            max-width: 48rem;
         }
         h1{ 
             font-size: 3.8rem;
@@ -90,29 +90,42 @@ main{
             margin-top: 3.1rem;
             .input-container{
                 display: flex;
+                justify-content: center;
+                align-items: center;
                 position: relative;
                 border: 1px solid var(--Desaturated_Red);
                 height: 5rem;
                 border-radius: 2.5rem;
                 padding-left: 2rem;
-                input[type='text']{  
+                
+                input[type='text']{ 
                     margin-right: 1rem;
                     width: 90%;
                     font-size: 1.3rem;
-                    border: none;
+                   border: none;
                     outline: none;
+                    background-color: #44bc3e;
                     background: transparent;
                     &::placeholder{
                         color: var(--Desaturated_Red);
                     }
+                    &:-webkit-autofill {
+                        -webkit-box-shadow: 0 0 0 1000px transparent inset;
+                        transition: background-color 5000s ease-in-out 0s;
+                    }
                 }
+            
+                
+
                 button[type='submit']{
+                    opacity: 0.3;
                     height: 100%;
                     width: 7rem;
                     border-radius: inherit;
                     border: none;
                     outline: none;
-                    background: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
+                    background: linear-gradient(135deg, hsl(0, 62%, 79%), hsl(0, 74%, 74%));
+                    
                 }
             }
         }
@@ -130,7 +143,7 @@ main{
 @media(min-width:376px){
     main{
         .container-img{
-            height: 38rem;
+            height: 34rem;
             .image{
                 background-size: cover;
                 background-position: left top;
@@ -143,6 +156,7 @@ main{
     main{
         .container-text{
             h1{
+                
                 line-height: 5.2rem;
                 font-size: 4.5rem;
                 span{
@@ -151,15 +165,12 @@ main{
             }
             p{
                 margin-top: 1.8rem;
-                padding: 0 40px;
+                padding: 0 4rem;
                 line-height: 2.4rem;
                 font-size: 1.7rem;
                 
             }    
                   
-        }
-        footer{
-            bottom: -60px;
         }
     }
 }
