@@ -5,9 +5,10 @@ document.addEventListener('DOMContentLoaded',function(){
     const $inputContainer = document.querySelector('.input-container')
     const $form = document.querySelector('#formulario')
     const $btnSubmit = document.querySelector('#formulario button[type="submit"]')
+    
 
-    $inputEmail.addEventListener('input',validadGmail)
-
+    $inputEmail.addEventListener('input',validadGmail);
+    
     $btnSubmit.addEventListener('click',(e)=>{
         e.preventDefault()
         const alertaExito = document.createElement('P')
@@ -29,42 +30,45 @@ document.addEventListener('DOMContentLoaded',function(){
         
     })
 
-    function validadGmail(e){
-        let inputvalue = e.target.value.trim();
-        const isValidEmail = regexEmail(inputvalue)
+    function prueba(a){
+        console.log(a)
+    }
+    function validadGmail(){
+        let timer
+        clearTimeout(timer);
 
-        const functionIcon = (address,inset)=>{
-            mostrarIcon(address,inset)
-        }
-        const functionsms = (sms,address)=>{
-            mostrarAlerta(sms,address)
-        }
+        timer = setTimeout(()=>{
+            const valor = $inputEmail.value.trim()
+            const isValidEmail = regexEmail(valor)
+         
+            const actions = {
+                validacion2:()=>{
+                    mostrarIcon('../images/icon-error.svg',1)
+                    $btnSubmit.style.opacity = 0.4;
+                    mostrarAlerta(`El Gmail es invalido`,$form)
+                },
+                validacion3:()=>{
+                    limpiarAlerta($form,'.input-error')
+                    mostrarIcon('../images/icon-valide.png',1)
+                    $btnSubmit.style.opacity = 1;
+                    $btnSubmit.disabled = false;
+                },
+            };
+    
+            if(!isValidEmail){
+                actions.validacion2()
+           
+            }
+            else if(isValidEmail){
+                actions.validacion3()
+                
+            }
 
-        // const function = (){
 
-        // }
-       
-        if(inputvalue === ''){
-            functionIcon('../images/icon-error.svg',1)
-            $btnSubmit.style.opacity = 0.4;
-            functionsms(`El campo Gmail es obligatorio`,$form);
-            return;
-        }
-        else if(!isValidEmail){
-            functionIcon('../images/icon-error.svg',1)
-            $btnSubmit.style.opacity = 0.4;
-            functionsms(`El Gmail es invalido`,$form)
-            return;
-        }
-        else{
-            limpiarAlerta($form,'.input-error')
-            functionIcon('../images/icon-valide.png',1)
-            $btnSubmit.style.opacity = 1;
-            $btnSubmit.disabled = false;
-            return;
-        } 
+        },1600); 
     }
 
+       
     function mostrarIcon(address,elementBefore,){
         // limpiarAlerta($inputContainer,'.icon-error')
         // const img = document.createElement('IMG');
@@ -88,12 +92,10 @@ document.addEventListener('DOMContentLoaded',function(){
         img.style.height = '2.5rem';
         img.src = address;
         $inputContainer.insertBefore(img, $inputContainer.children[elementBefore]);
-        // return img;
     
     }
 
     function mostrarAlerta(mensaje,referencia){
-        // console.log(referencia)
         limpiarAlerta($form,'.input-error')
         const error = document.createElement('P')
         error.classList.add('input-error')
@@ -108,8 +110,6 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function limpiarAlerta(referencia,id){
         const alerta = referencia.querySelector(id)
-        // console.log(alerta)  
-
         if(alerta){
             alerta.remove()
         } 
@@ -118,7 +118,6 @@ document.addEventListener('DOMContentLoaded',function(){
     function regexEmail(email){
         const  regex  =   /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
         const resultado = regex.test(email);
-        console.log(resultado)
         return resultado;
     }
 })
