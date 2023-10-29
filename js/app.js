@@ -1,13 +1,32 @@
 
 
-document.addEventListener('DOMContentLoaded',function(){    
+document.addEventListener('DOMContentLoaded',function(){  
+      
     const $inputEmail = document.getElementById('gmail')
     const $inputContainer = document.querySelector('.input-container')
     const $form = document.querySelector('#formulario')
     const $btnSubmit = document.querySelector('#formulario button[type="submit"]')
     
 
-    $inputEmail.addEventListener('input',validadGmail);
+        // Modelo
+    var model = {
+        inputValue: ""
+    };
+
+    // Vista
+   
+    // Controlador
+    $inputEmail.addEventListener("input", function() {
+        model.inputValue = $inputEmail.value;
+    });
+
+    function actualizarVista() {
+        console.log("Valor en tiempo real: " + model.inputValue)
+    }
+
+    // Actualizar la vista en tiempo real
+    setInterval(actualizarVista, 1000);
+    
     
     $btnSubmit.addEventListener('click',(e)=>{
         e.preventDefault()
@@ -26,19 +45,18 @@ document.addEventListener('DOMContentLoaded',function(){
             limpiarAlerta($inputContainer,'.icon-error')
             limpiarAlerta($form,'.input-valido')
             $form.reset()
+            $inputEmail.blur()
         },2000)
         
     })
 
-    function prueba(a){
-        console.log(a)
-    }
     function validadGmail(){
         let timer
         clearTimeout(timer);
 
         timer = setTimeout(()=>{
             const valor = $inputEmail.value.trim()
+            console.log(valor)
             const isValidEmail = regexEmail(valor)
          
             const actions = {
@@ -65,7 +83,7 @@ document.addEventListener('DOMContentLoaded',function(){
             }
 
 
-        },1600); 
+        },2000); 
     }
 
        
