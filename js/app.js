@@ -1,54 +1,35 @@
-
-
 document.addEventListener('DOMContentLoaded',function(){  
       
     const $inputEmail = document.getElementById('gmail')
     const $inputContainer = document.querySelector('.input-container')
     const $form = document.querySelector('#formulario')
     const $btnSubmit = document.querySelector('#formulario button[type="submit"]')
-    
 
-        // Modelo
-    var model = {
-        inputValue: ""
-    };
+    $inputEmail.addEventListener("input", validadGmail);
 
-    // Vista
-   
-    // Controlador
-    $inputEmail.addEventListener("input", function() {
-        model.inputValue = $inputEmail.value;
-    });
-
-    function actualizarVista() {
-        console.log("Valor en tiempo real: " + model.inputValue)
-    }
-
-    // Actualizar la vista en tiempo real
-    setInterval(actualizarVista, 1000);
-    
-    
     $btnSubmit.addEventListener('click',(e)=>{
-        e.preventDefault()
-        const alertaExito = document.createElement('P')
-        alertaExito.classList.add('input-valido')
-        alertaExito.style.marginTop = '1rem'
-        alertaExito.style.paddingLeft = '1.8rem'
-        alertaExito.style.color = '#44bc3e'
-        alertaExito.textContent = 'Gmail Agregado';
+        e.preventDefault();
+
+        const alertaExito = crearElemento('P','input-valido','Gmail Agregado',{
+            marginBottom: '1rem',
+            paddingLeft: '1.8rem',
+            color:'#44bc3e',
+            textAlign:'left',
+        },)
         $form.appendChild(alertaExito)
 
         setTimeout(()=>{
-            // console.log('limpiar')
-            $btnSubmit.style.opacity = 0.4; 
-            $btnSubmit.disabled = true;
-            limpiarAlerta($inputContainer,'.icon-error')
-            limpiarAlerta($form,'.input-valido')
-            $form.reset()
-            $inputEmail.blur()
+            limpiarFormulario()
         },2000)
-        
     })
+
+    function limpiarFormulario(){
+        $btnSubmit.style.opacity = 0.4; 
+        $btnSubmit.disabled = true;//Bloquear Boton
+        limpiarAlerta($inputContainer,'.icon-error')
+        limpiarAlerta($form,'.input-valido')
+        $form.reset()
+    }
 
     function validadGmail(){
         let timer
@@ -56,74 +37,51 @@ document.addEventListener('DOMContentLoaded',function(){
 
         timer = setTimeout(()=>{
             const valor = $inputEmail.value.trim()
-            console.log(valor)
             const isValidEmail = regexEmail(valor)
-         
-            const actions = {
-                validacion2:()=>{
-                    mostrarIcon('../images/icon-error.svg',1)
-                    $btnSubmit.style.opacity = 0.4;
-                    mostrarAlerta(`El Gmail es invalido`,$form)
-                },
-                validacion3:()=>{
-                    limpiarAlerta($form,'.input-error')
-                    mostrarIcon('../images/icon-valide.png',1)
-                    $btnSubmit.style.opacity = 1;
-                    $btnSubmit.disabled = false;
-                },
-            };
-    
-            if(!isValidEmail){
-                actions.validacion2()
            
+            if(!isValidEmail){
+                mostrarIcon('../images/icon-error.svg',1)
+                $btnSubmit.style.opacity = 0.4;
+                mostrarAlerta(`El Gmail es invalido`,$form)
             }
             else if(isValidEmail){
-                actions.validacion3()
-                
+                limpiarAlerta($form,'.input-error')
+                mostrarIcon('../images/icon-valide.png',1)
+                $btnSubmit.style.opacity = 1;
+                $btnSubmit.disabled = false;   
             }
-
-
         },2000); 
     }
-
-       
-    function mostrarIcon(address,elementBefore,){
-        // limpiarAlerta($inputContainer,'.icon-error')
-        // const img = document.createElement('IMG');
-        // img.classList.add('icon-error')
-        // img.style.marginLeft = '0.1rem'
-        // img.style.marginRight = '0.8rem'
-        // img.style.width = '2.5rem';
-        // img.style.height = '2.5rem';
-        // img.src = address;
-        // $inputContainer.insertBefore(img,$inputContainer.children[elementBefore]);
+    
+    function mostrarIcon(address,elementBefore){
         const $icon = $inputContainer.querySelector('.icon-error');
         if ($icon) {
             $icon.src = address;
             return $icon;
         }
-        const img = document.createElement('IMG');
-        img.classList.add('icon-error');
-        img.style.marginLeft = '0.1rem';
-        img.style.marginRight = '0.8rem';
-        img.style.width = '2.5rem';
-        img.style.height = '2.5rem';
-        img.src = address;
+        const img = crearElemento('IMG', 'icon-error', address, {
+            marginLeft: '0.1rem',
+            marginRight: '0.8rem',
+            width: '2.5rem',
+            height: '2.5rem',
+        });
         $inputContainer.insertBefore(img, $inputContainer.children[elementBefore]);
-    
     }
 
     function mostrarAlerta(mensaje,referencia){
-        limpiarAlerta($form,'.input-error')
-        const error = document.createElement('P')
-        error.classList.add('input-error')
-        error.style.marginTop = '1rem'
-        error.style.paddingLeft = '2rem'
-        error.style.color = 'red'
-        error.textContent = mensaje;
-        error.style.textAlign = 'left'
-        error.style.marginBottom = '10px'
-        referencia.appendChild(error)
+        const $sms = referencia.querySelector('.input-error')
+        if($sms){
+            $sms.textContent = mensaje
+        }else {
+            const error = crearElemento('P', 'input-error', mensaje, {
+              marginTop: '1rem',
+              paddingLeft: '2rem',
+              color: 'red',
+              textAlign: 'left',
+              marginBottom: '10px',
+            });
+            referencia.appendChild(error);
+        }
     }
 
     function limpiarAlerta(referencia,id){
@@ -135,7 +93,18 @@ document.addEventListener('DOMContentLoaded',function(){
 
     function regexEmail(email){
         const  regex  =   /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-        const resultado = regex.test(email);
-        return resultado;
+        return regex.test(email);
+    }
+
+    function crearElemento(tagName, className, content, styles) {
+        const element = document.createElement(tagName);
+        element.classList.add(className);
+
+        if(tagName === 'P') element.textContent = content;
+        else if(tagName === 'IMG') element.src = content;
+        
+        for (const style in styles) element.style[style] = styles[style];
+
+        return element;
     }
 })
