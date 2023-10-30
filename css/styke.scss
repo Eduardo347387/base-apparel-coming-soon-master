@@ -168,7 +168,6 @@ main{
                 padding: 0 4rem;
                 line-height: 2.4rem;
                 font-size: 1.7rem;
-                
             }    
                   
         }
@@ -199,6 +198,9 @@ main{
             display: flex;
             justify-content: flex-start;
             align-items: flex-end;
+            img{
+                width: 15rem;
+            }
         }
         .container-img{
             height: unset;
@@ -234,7 +236,6 @@ main{
             bottom: 0;
             grid-row: -1;
             grid-column: 1/11;
-            border: 1px solid ;
         }
     }
 }

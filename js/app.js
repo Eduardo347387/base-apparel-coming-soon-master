@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded',function(){
     const $form = document.querySelector('#formulario')
     const $btnSubmit = document.querySelector('#formulario button[type="submit"]')
 
-    $inputEmail.addEventListener("input", validadGmail);
+    $inputEmail.addEventListener("input", validarGmail);
 
     $btnSubmit.addEventListener('click',(e)=>{
         e.preventDefault();
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',function(){
         $form.reset()
     }
 
-    function validadGmail(){
+    function validarGmail(){
         let timer
         clearTimeout(timer);
 

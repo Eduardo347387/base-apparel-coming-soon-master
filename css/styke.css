@@ -182,6 +182,9 @@ main footer {
     justify-content: flex-start;
     align-items: flex-end;
   }
+  main header img {
+    width: 15rem;
+  }
   main .container-img {
     height: unset;
     grid-row: 1/-1;
@@ -215,6 +218,5 @@ main footer {
     bottom: 0;
     grid-row: -1;
     grid-column: 1/11;
-    border: 1px solid;
   }
 }/*# sourceMappingURL=styke.css.map */
